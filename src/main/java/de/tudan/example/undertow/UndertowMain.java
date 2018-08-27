@@ -5,9 +5,7 @@ import io.undertow.servlet.Servlets;
 import io.undertow.servlet.api.DeploymentInfo;
 import org.jboss.resteasy.plugins.server.undertow.UndertowJaxrsServer;
 import org.jboss.resteasy.spi.ResteasyDeployment;
-import org.jboss.weld.environment.servlet.Listener;
-import org.mvcspec.ozark.servlet.OzarkContainerInitializer;
-import org.xnio.Option;
+
 
 /**
  * @author Gregor Tudan, Cofinpro AG
@@ -27,7 +25,7 @@ public class UndertowMain {
                 .setClassLoader(UndertowMain.class.getClassLoader())
                 .setContextPath("/mvc")
                 .setDeploymentName("MVC")
-                .addListener(Servlets.listener(Listener.class));
+                .addListener(Servlets.listener(org.jboss.weld.environment.servlet.Listener.class));
 
         jaxrsServer.deploy(deploymentInfo);
 
